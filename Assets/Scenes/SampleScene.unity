@@ -642,8 +642,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"0 G"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a7cca024f1315654b97c3d03a4d2a1ed, type: 2}
+  m_sharedMaterial: {fileID: 4041140637900811510, guid: a7cca024f1315654b97c3d03a4d2a1ed, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -929,6 +929,7 @@ GameObject:
   - component: {fileID: 1635942104}
   - component: {fileID: 1635942106}
   - component: {fileID: 1635942107}
+  - component: {fileID: 1635942108}
   m_Layer: 0
   m_Name: UpgradeListArea
   m_TagString: Untagged
@@ -1038,6 +1039,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
   m_Softness: {x: 0, y: 0}
+--- !u!114 &1635942108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635942102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a327e9dd3e4644438e7a3e542a984b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeListManager
+  upgradeItemPrefab: {fileID: 2145122810201547496, guid: 6352c57b167f96847a0979f43ce79a46, type: 3}
+  contentContainer: {fileID: 976979664}
+  upgradeDataList:
+  - {fileID: 11400000, guid: e13b69fc02b680a43afc5ddd5dd30ffe, type: 2}
+  - {fileID: 11400000, guid: 2c88aabca68bb6b46af2067257feccb5, type: 2}
+  - {fileID: 11400000, guid: 2352bd0f00b9d2347aa23aa6bea23349, type: 2}
+  - {fileID: 11400000, guid: e45c07abcf47d7942b8bbfd2b18dcf3d, type: 2}
+  - {fileID: 11400000, guid: 129a8d8d30993364eb37252706e30692, type: 2}
+  - {fileID: 11400000, guid: 7387d2cb747f5fc44ae383b405b5b5e2, type: 2}
+  - {fileID: 11400000, guid: 1adb38701012baf4285971ed2df7d369, type: 2}
+  - {fileID: 11400000, guid: a545609c3aeb89245bddb1378012c43c, type: 2}
+  - {fileID: 11400000, guid: 3c9f628c39c20c84ba05876d5bf2e495, type: 2}
+  - {fileID: 11400000, guid: 155847375bb157549be804d99c94a435, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
