@@ -32,11 +32,17 @@ public class CoinClickEffect : MonoBehaviour
 
     public void PlayEffects()
     {
-        // 1. ���� ��ġ �ִϸ��̼�
+        // 0. 사운드 재생 추가
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayCoinSound();
+        }
+
+        // 1. 코인 펀치 애니메이션
         if (punchCoroutine != null) StopCoroutine(punchCoroutine);
         punchCoroutine = StartCoroutine(PunchRoutine());
 
-        // 2. ȹ�� ��� �÷��� �ؽ�Ʈ ����
+        // 2. 획득 골드 플로팅 텍스트 생성
         if (floatingTextPrefab != null && effectContainer != null && CurrencyManager.Instance != null)
         {
             GameObject obj = Instantiate(floatingTextPrefab, effectContainer);
@@ -45,7 +51,7 @@ public class CoinClickEffect : MonoBehaviour
             if (obj.TryGetComponent<FloatingText>(out var floatText))
             {
                 double gained = CurrencyManager.Instance.GoldPerClick;
-                floatText.Setup($"+{gained:N0}", new Color(1f, 0.85f, 0.2f, 1f)); // ��� ����
+                floatText.Setup($"+{gained:N0}", new Color(1f, 0.85f, 0.2f, 1f));
             }
         }
     }
