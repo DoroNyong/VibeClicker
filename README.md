@@ -34,7 +34,7 @@
        │  (의도 전달, 라이프사이클 설계 및 아키텍처 가이드)
        ▼
 [Claude Code (CLI Agent)] ──(MCP Server)──▶ [Unity Editor & C# Solution]
-       │                                            │
+       │                                              │
        ├─ 씬 내 GameObject 동적 생성 및 트랜스폼 정렬   │
        ├─ UI RectTransform 앵커링 및 인스펙터 바인딩    │
        ├─ 이벤트 리스너 및 AudioSource 컴포넌트 연결    │
