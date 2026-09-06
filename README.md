@@ -16,7 +16,7 @@
 - **장현교** : 1인 개발 (기획, 아키텍처 설계, Unity CLI-MCP 파이프라인 구축 및 바이브 코딩 오케스트레이션)
 
 ## ⚙️ 개발 환경
-- **Engine** : Unity (Unity 2023 / Unity 6)
+- **Engine** : Unity (Unity 6.3 LTS)
 - **Language** : C# (.NET Standard)
 - **Agentic Tools** : Claude Code (CLI), Model Context Protocol (MCP) Server for Unity
 - **VCS & OS** : Git, GitHub Desktop / Windows
@@ -25,7 +25,7 @@
 
 ## 🤖 핵심 차별점 : Unity CLI + MCP 기반 바이브 코딩 (Vibe Coding)
 
-본 프로젝트는 단순 질의응답 형태의 AI 보조 방식을 탈피하여, **터미널 환경의 Claude Code CLI가 MCP를 통해 유니티 씬(Scene)을 직접 제어하고 C# 코드를 감사(Audit)하는 차세대 개발 파이프라인**을 검증하고 적용했습니다.
+본 프로젝트는 단순 질의응답 형태의 AI 보조 방식을 탈피하여, **터미널 환경의 Claude Code CLI가 MCP를 통해 유니티 씬을 직접 제어하고 C# 코드를 감사하는 차세대 개발 파이프라인**을 검증하고 적용했습니다.
 
 ### 1. 개발 파이프라인 아키텍처
 
