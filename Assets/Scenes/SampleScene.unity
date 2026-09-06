@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 186125024}
   - component: {fileID: 186125023}
   - component: {fileID: 186125025}
+  - component: {fileID: 186125026}
   m_Layer: 0
   m_Name: ClickButton
   m_TagString: Untagged
@@ -239,6 +240,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &186125026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186125021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deda25f61e5e0ab4da4c7136e5a2c641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinClickEffect
+  targetTransform: {fileID: 186125022}
+  punchScale: 0.88
+  punchDuration: 0.12
+  floatingTextPrefab: {fileID: 1025310985021988046, guid: a12d2c826a33e2745a04bf4196aa5cc8, type: 3}
+  effectContainer: {fileID: 1399120131}
 --- !u!1 &229844648
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,6 +850,7 @@ RectTransform:
   - {fileID: 917436060}
   - {fileID: 186125022}
   - {fileID: 1635942103}
+  - {fileID: 1399120131}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -916,6 +935,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyView
   goldText: {fileID: 917436061}
   clickButton: {fileID: 186125025}
+--- !u!1 &1399120130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399120131}
+  m_Layer: 0
+  m_Name: EffectContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1399120131
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399120130}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1191935130}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1635942102
 GameObject:
   m_ObjectHideFlags: 0
