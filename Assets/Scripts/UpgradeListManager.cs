@@ -12,9 +12,8 @@ public class UpgradeListManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnUpgradeItems(); // 1. 슬롯 오브젝트들 먼저 모두 인스턴스화
+        SpawnUpgradeItems();
 
-        // 2. 생성이 완벽히 끝난 직후 세이브 데이터 로드 실행
         if (SaveManager.Instance != null)
         {
             SaveManager.Instance.LoadGame();

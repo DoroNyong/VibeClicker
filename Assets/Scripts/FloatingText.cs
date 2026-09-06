@@ -21,8 +21,6 @@ public class FloatingText : MonoBehaviour
     private IEnumerator AnimateRoutine()
     {
         float elapsed = 0f;
-        Vector3 startPos = transform.localPosition;
-        // 약간 좌우로 랜덤하게 퍼지며 위로 상승
         Vector3 randomOffset = new Vector3(Random.Range(-30f, 30f), 0, 0);
         transform.localPosition += randomOffset;
 
@@ -33,10 +31,8 @@ public class FloatingText : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
 
-            // 위로 이동
             transform.localPosition += Vector3.up * (moveSpeed * Time.deltaTime);
 
-            // 서서히 페이드 아웃
             if (textMesh != null)
             {
                 textMesh.color = new Color(initialColor.r, initialColor.g, initialColor.b, 1f - t);

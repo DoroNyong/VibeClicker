@@ -9,8 +9,9 @@ public class CurrencyManager : MonoBehaviour
     public double GoldPerClick { get; set; } = 1;
     public double GoldPerSecond { get; set; } = 0;
 
-    // UI가 값 변경을 감지할 수 있도록 발행하는 이벤트
     public event Action<double> OnGoldChanged;
+
+    private long lastDisplayedGold = 0;
 
     private void Awake()
     {
@@ -41,7 +42,7 @@ public class CurrencyManager : MonoBehaviour
     public void AddGold(double amount)
     {
         CurrentGold += amount;
-        OnGoldChanged?.Invoke(CurrentGold);
+        NotifyIfDisplayChanged();
     }
 
     public bool TrySpendGold(double amount)
@@ -49,16 +50,34 @@ public class CurrencyManager : MonoBehaviour
         if (CurrentGold >= amount)
         {
             CurrentGold -= amount;
-            OnGoldChanged?.Invoke(CurrentGold);
+            NotifyIfDisplayChanged();
             return true;
         }
         return false;
     }
 
-    // 세이브 데이터 로드용 골드 강제 세팅 메서드
     public void SetGold(double gold)
     {
         CurrentGold = gold;
+        NotifyIfDisplayChanged();
+    }
+
+    public void ResetState()
+    {
+        CurrentGold = 0;
+        GoldPerClick = 1;
+        GoldPerSecond = 0;
+        lastDisplayedGold = (long)Math.Floor(CurrentGold);
         OnGoldChanged?.Invoke(CurrentGold);
+    }
+
+    private void NotifyIfDisplayChanged()
+    {
+        long floored = (long)Math.Floor(CurrentGold);
+        if (floored != lastDisplayedGold)
+        {
+            lastDisplayedGold = floored;
+            OnGoldChanged?.Invoke(CurrentGold);
+        }
     }
 }

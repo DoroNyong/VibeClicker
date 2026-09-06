@@ -20,8 +20,6 @@ public class SaveManager : MonoBehaviour
         saveFilePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
     }
 
-    // ¼öµ¿ ÀúÀåÀ» ¸ŞÀÎÀ¸·Î »ç¿ëÇÏ¹Ç·Î Update ÀÚµ¿ ÀúÀåÀº Á¦°Å/ºñÈ°¼ºÈ­ÇÕ´Ï´Ù.
-
     public void SaveGame()
     {
         if (CurrencyManager.Instance == null) return;
@@ -46,7 +44,7 @@ public class SaveManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(saveFilePath, json);
-        Debug.Log("[SaveManager] µ¥ÀÌÅÍ°¡ ¼öµ¿À¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù.");
+        Debug.Log("[SaveManager] ë°ì´í„°ê°€ ì„±ê³µì ìœ¼ë¡œ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
     }
 
     public void LoadGame()
@@ -60,13 +58,11 @@ public class SaveManager : MonoBehaviour
 
             if (data == null) return;
 
-            // 1. °ñµå º¹¿ø
             if (CurrencyManager.Instance != null)
             {
                 CurrencyManager.Instance.SetGold(data.currentGold);
             }
 
-            // 2. ¾÷±×·¹ÀÌµå ·¹º§ º¹¿ø
             UpgradeItem[] items = FindObjectsByType<UpgradeItem>(FindObjectsSortMode.None);
             foreach (var item in items)
             {
@@ -81,20 +77,23 @@ public class SaveManager : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"[SaveManager] µ¥ÀÌÅÍ ·Îµå ½ÇÆĞ: {e.Message}");
+            Debug.LogError($"[SaveManager] ë°ì´í„° ë¡œë“œ ì‹¤íŒ¨: {e.Message}");
         }
     }
 
-    // ÃÊ±âÈ­ ¹öÆ° Å¬¸¯ ½Ã È£Ãâ
     public void ResetSaveData()
     {
         if (File.Exists(saveFilePath))
         {
             File.Delete(saveFilePath);
-            Debug.Log("[SaveManager] ¼¼ÀÌºê ÆÄÀÏÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.");
+            Debug.Log("[SaveManager] ì„¸ì´ë¸Œ ë°ì´í„°ê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
         }
 
-        // ¾ÀÀ» ´Ù½Ã ·ÎµåÇÏ¿© ¸ğµç ¼öÄ¡¿Í UI¸¦ ÃÊ±â »óÅÂ·Î ±ú²ıÇÏ°Ô ¸®¼Â
+        if (CurrencyManager.Instance != null)
+        {
+            CurrencyManager.Instance.ResetState();
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -4,10 +4,9 @@ using UnityEngine.UI;
 
 public class CoinClickEffect : MonoBehaviour
 {
-    // touch to force recompile
     [Header("Punch Animation")]
     [SerializeField] private RectTransform targetTransform;
-    [SerializeField] private float punchScale = 0.88f; // ��¦ ���ȴٰ� ����
+    [SerializeField] private float punchScale = 0.88f;
     [SerializeField] private float punchDuration = 0.12f;
 
     [Header("Floating Text")]
@@ -22,6 +21,13 @@ public class CoinClickEffect : MonoBehaviour
         if (targetTransform == null)
             targetTransform = GetComponent<RectTransform>();
 
+        if (targetTransform == null)
+        {
+            Debug.LogWarning($"{nameof(CoinClickEffect)} on '{gameObject.name}' requires a RectTransform.");
+            enabled = false;
+            return;
+        }
+
         originalScale = targetTransform.localScale;
 
         if (TryGetComponent<Button>(out var button))
@@ -32,17 +38,14 @@ public class CoinClickEffect : MonoBehaviour
 
     public void PlayEffects()
     {
-        // 0. 사운드 재생 추가
         if (SoundManager.Instance != null)
         {
             SoundManager.Instance.PlayCoinSound();
         }
 
-        // 1. 코인 펀치 애니메이션
         if (punchCoroutine != null) StopCoroutine(punchCoroutine);
         punchCoroutine = StartCoroutine(PunchRoutine());
 
-        // 2. 획득 골드 플로팅 텍스트 생성
         if (floatingTextPrefab != null && effectContainer != null && CurrencyManager.Instance != null)
         {
             GameObject obj = Instantiate(floatingTextPrefab, effectContainer);
@@ -58,7 +61,6 @@ public class CoinClickEffect : MonoBehaviour
 
     private IEnumerator PunchRoutine()
     {
-        // ������ ��׷���
         float halfDuration = punchDuration * 0.5f;
         float elapsed = 0f;
 
@@ -69,7 +71,6 @@ public class CoinClickEffect : MonoBehaviour
             yield return null;
         }
 
-        // ź�� �ְ� ����
         elapsed = 0f;
         while (elapsed < halfDuration)
         {
