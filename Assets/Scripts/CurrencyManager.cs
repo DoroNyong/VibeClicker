@@ -54,4 +54,11 @@ public class CurrencyManager : MonoBehaviour
         }
         return false;
     }
+
+    // 세이브 데이터 로드용 골드 강제 세팅 메서드
+    public void SetGold(double gold)
+    {
+        CurrentGold = gold;
+        OnGoldChanged?.Invoke(CurrentGold);
+    }
 }
